@@ -1,3 +1,13 @@
+# SunshineAPP
+Site de Streaming fiction feito em react com css, com backend na api do TMDB
+
+V1.2 - Telas De Login, Cadastro, Pesquisa, Media Info e Media Watch.
+
+V1.3 - Integração com Api TMDB para popular o site com função de pesquisa, detalhes da midia, e midia similares.
+
+Instalaçoes via npm para rodar:
+React router, montion, modal e node-fetch@2
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
