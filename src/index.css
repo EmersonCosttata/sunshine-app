@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+    padding:0;
+    background: linear-gradient(to right, #d95213, #e8c70d);
+    min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
