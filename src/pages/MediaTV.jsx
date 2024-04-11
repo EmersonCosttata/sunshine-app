@@ -7,7 +7,7 @@ import Modal from 'react-modal';
 import { MoviesList } from '../Api/MoviesList';
 import { useParams } from 'react-router-dom';
 import { TvDetail } from '../Api/TvDetail';
-
+import { GetMediaTrailer } from '../Api/GetMediaTrailer';
 
 import { useContext } from 'react';
 import { FalseContext } from '../Context/FalseContext';
