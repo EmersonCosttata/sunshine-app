@@ -12,7 +12,6 @@ const [pesquisa, setPesquisa] = useState('');
      //chamando filmes e series de acorodo com q query     
 let url = `https://api.themoviedb.org/3/search/movie?query=${pesquisa}&include_adult=true&language=pt-BR&page=1`;
     const data = MoviesList({url})
-    console.log(data)
 
     url = `https://api.themoviedb.org/3/search/tv?query=${pesquisa}&include_adult=true&language=pt-BR&page=1`;
     const data2 = MoviesList({url})

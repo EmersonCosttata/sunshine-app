@@ -16,13 +16,11 @@ import Media from './pages/Media';
 import MediaTV from './pages/MediaTV';
 
 
-
 function App() {
   const loc = useLocation();
       return(
-      
         <div className="App">
-
+   
       <Header/>
 
     <motion.div 
@@ -43,7 +41,6 @@ function App() {
         <Footer></Footer> 
     </motion.div>
         </div>
-
   )
 }
 

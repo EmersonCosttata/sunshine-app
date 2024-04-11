@@ -1,14 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Modal from 'react-modal';
 import PopOutPesquisa from './PopOutPesquisa';
 
+import { useContext } from 'react';
+import { FalseContext } from '../Context/FalseContext';
+
 import './PopOut.css'
+
 
 Modal.setAppElement("#root");
 
+
 function PopOut() {
+  //contexo pra fechar em qualquer lugar o modal
+  const { popfalse, setPopFalse } = useContext(FalseContext);
 
   //pop out modal
   const [modalIsOpen, setMIsOpen] = useState(false);
@@ -22,6 +29,14 @@ function PopOut() {
   };
 
   const [isOpen, setIsOpen] = useState(false); 
+// cuida se o context mudar pra false, assim ele seta pra false
+  useEffect(()=>{
+    if(popfalse===false){
+      console.log('CHEGUEI NO FALSE')
+      setMIsOpen(false);
+    }
+  },[popfalse])
+
 
   return (
     <>
