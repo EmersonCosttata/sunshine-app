@@ -5,10 +5,12 @@ V1.2 - Telas De Login, Cadastro, Pesquisa, Media Info e Media Watch.
 
 V1.3 - Integração com Api TMDB para popular o site com função de pesquisa, detalhes da midia, e midia similares.
 
+V1.4 - Apromirando com a api, no botão de assitir, o trailer do filme quando possivel, e pop moodal fecha quando selecionado um filme ou serie
+
 Instalaçoes via npm para rodar:
 React router, montion, modal e node-fetch@2
 
-se quise somente acessar : sunshine-app-delta.vercel.app
+se quiser somente acessar : sunshine-app-delta.vercel.app
 
 # Getting Started with Create React App
 
