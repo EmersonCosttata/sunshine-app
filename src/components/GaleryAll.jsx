@@ -6,7 +6,7 @@ import { FalseContext } from '../Context/FalseContext';
 
 const GaleryAll = ({ images }) => {
 
-const vetorImage = images.slice(1,10)
+const vetorImage = images
 
 const { popfalse, setPopFalse } = useContext(FalseContext);
 

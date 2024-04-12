@@ -16,7 +16,6 @@ let url = `https://api.themoviedb.org/3/search/movie?query=${pesquisa}&include_a
     url = `https://api.themoviedb.org/3/search/tv?query=${pesquisa}&include_adult=true&language=pt-BR&page=1`;
     const data2 = MoviesList({url})
     
-
   return (
     <div className='popesquisa'>
       <p>O que você esta procurando hoje?</p>

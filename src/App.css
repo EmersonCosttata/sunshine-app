@@ -25,6 +25,7 @@ width: 13vh;
   font-size: 17px; /* Tamanho da fonte */
   padding: 10px 20px; /* Espaçamento interno */
   cursor: pointer; /* Mostra um cursor de ponteiro ao passar o mouse */
+  
 }
 
 .buttons button:hover {
@@ -33,6 +34,8 @@ width: 13vh;
 .buttons span {
 font-weight: bold;
 font-size: 18px;
+text-decoration: none;
+color: white;
 }
 
 .destaque{

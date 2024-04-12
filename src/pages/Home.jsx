@@ -12,9 +12,9 @@ const Home = () => {
   const [data4] = MoviesList({ url: 'https://api.themoviedb.org/3/tv/popular?language=pt-BR&page=1' });
   
   const [data5] = MoviesList({ url: 'https://api.themoviedb.org/3/tv/top_rated?language=pt-BR&page=1' });
-  const textoDestaque="Oppenheimer na Area";
-  const paragrafos="Premidado no Oscar, chega nas telas da sunshine hoje!";
-  const paragrafos2="Conheça sobre a historia da bomba atomica";
+  const textoDestaque="Todos menos você?";
+  const paragrafos="A comedia romantica do momento chegou no Sun";
+  const paragrafos2="Chame seu Amado(a) e clica em assistir";
   
   return (
     <>

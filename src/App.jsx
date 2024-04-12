@@ -14,6 +14,8 @@ import SelectPlano from './pages/SelectPlano';
 import Cadastro from './pages/Cadastro';
 import Media from './pages/Media';
 import MediaTV from './pages/MediaTV';
+import Movies from './pages/Movies';
+import Series from './pages/Series';
 
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
           <Route path="/cadastro/:plan" element={<Cadastro></Cadastro>}/>
           <Route path="/media/:id" element={<Media></Media>}/>
           <Route path="/mediatv/:id" element={<MediaTV></MediaTV>}/>
+          <Route path="/movies" element={<Movies/>}/>
+          <Route path="/series" element={<Series/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
      </AnimatePresence>
