@@ -8,6 +8,7 @@ import { MoviesList } from '../Api/MoviesList';
 import { useParams } from 'react-router-dom';
 import {MovieDetail} from '../Api/MovieDetail'
 import {GetMediaTrailer} from '../Api/GetMediaTrailer'
+import { QueryYoutubeTrailer } from '../Api/QueryYoutubeTrailer';
 
 import { useContext } from 'react';
 import { FalseContext } from '../Context/FalseContext';
@@ -40,12 +41,17 @@ const data = MovieDetail({id})
 //função pra pegar o trialer do filme
 const url = `https://api.themoviedb.org/3/movie/${id}/videos?language=pt-BR`
 const trailer = GetMediaTrailer({url})
-console.log(trailer.trailer)
 
+let yturl;
+if (trailer.trailer && trailer.trailer.length !== 0) {
+  yturl = `https://www.youtube.com/embed/${trailer.trailer[0].key}?vq=hd1080&autoplay=1`;
+} else {
+  if (data.movie) {
+    yturl = QueryYoutubeTrailer(data.movie.title);
+    if(yturl = []) yturl= `https://www.youtube.com/embed/E0ozmU9cJDg?vq=hd1080&autoplay=1`
+  }
+}
 
-const yturl = trailer.trailer && trailer.trailer.length !== 0
-  ? `https://www.youtube.com/embed/${trailer.trailer[0].key}?vq=hd1080&autoplay=1`
-  : 'https://www.youtube.com/embed/9DEOJkmZLd8?vq=hd1080&autoplay=1';
     return (
       <div className="mediageral">
   
@@ -63,7 +69,7 @@ const yturl = trailer.trailer && trailer.trailer.length !== 0
             overlayClassName="overlay" classname="content" style={{content: { backgroundColor: 'rgba(0, 0, 0, 0.9)'}
             }} >
               <button className="fechar"onClick={closeModal}>X</button>
-              <iframe src={yturl} title="" frameborder="0" allowfullscreen="true" width="98%" height="98%"></iframe>
+              <iframe src={yturl} title='_' frameborder="0" allowfullscreen="true" width="98%" height="98%"></iframe>
             </Modal>
             
              <button >Trailer</button> <button >+</button> 

@@ -12,7 +12,7 @@ height: 100%;
 
 .mediafilmenome{
     position:relative;
-    top: -90vh;
+    top:-38rem;
     left: 6vh;
     width: 29vw;
     color:white;
@@ -63,7 +63,45 @@ padding: 10px;
       .fechar:hover {
        color: rgba(0, 0, 0, 0.486);
       }
-    
-    
-    
+  /*_______________________________________________________________________________________________________________________*/
+ @media (max-width: 900px) 
+  {
+    .mediageralimg{
+      width: 100%; 
+      height: 100%;
+      margin-bottom: 40vh;
+  }
+
+  .mediafilmenome{
+    position:relative;
+    left: 2vh;
+    top: -62.4vh;
+    width:80%;
+    color:white;
+
+}
+.mediafilmenomeimg{
+width: 18vw;
+} 
+
+.mediafilmenome p{
+background-color: rgba(0, 0, 0, 0.329);
+border: 2px solid;
+border-radius: 2px;
+padding: 7px;
+font-size: 0.8em;
+    } 
+
+.mediafilmenome button {
+        margin-right: 7px;
+        background-color: rgba(0, 0, 0, 0.432); /* Torna o botão transparente */
+        border-color: white;
+        border-radius: 4px; 
+        color: white; 
+        font-size: 14px; 
+        padding: 7px 14px; /* Espaçamento interno */
+        cursor: pointer; /* Mostra um cursor de ponteiro ao passar o mouse */
+      }
+
+  } 
      

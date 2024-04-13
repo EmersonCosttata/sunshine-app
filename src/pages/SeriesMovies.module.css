@@ -68,10 +68,23 @@ width: 10%;
         background-color: rgba(255, 255, 255, 0.3); /* Adiciona uma leve opacidade quando passa o mouse */
       }
 
-      .geners button[switch="true"] {
-        background-color: rgba(116, 111, 111, 0.705);
+    @media (max-width: 900px) 
+  {
+    .geners button{
+        margin: 1vh;
+        background-color: transparent; /* Torna o botão transparente */
+        border: none; /* Remove a borda */
+        color: white; /* Cor do texto */
+        font-size: 15px; /* Tamanho da fonte */
+        padding: 1px 2px; /* Espaçamento interno */
+        cursor: pointer; /* Mostra um cursor de ponteiro ao passar o mouse */
       }
-      .buttonselected {
-        background-color: green;
-        color: white;
+
+      .geners{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding-bottom: 2em;
     }
+
+  }

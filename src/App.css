@@ -18,7 +18,6 @@ width: 13vh;
   margin-right: 47%;
 }
 .buttons button {
-  margin-right: 10px;
   background-color: transparent; /* Torna o botão transparente */
   border: none; /* Remove a borda */
   color: white; /* Cor do texto */
@@ -46,7 +45,6 @@ height: 100%;
 }
 .destaque img{
 width: 100%;
-overflow: hidden; 
   }
   
 
@@ -151,3 +149,71 @@ margin-bottom: 25px;
 .pop-out-container.open {
   display: block;
 }
+
+
+@media (max-width: 900px) {
+  /* Ajustes para telas menores, como dispositivos móveis _________________________________________________________________________________*/
+  
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(170, 168, 168);
+    padding-bottom: 20px;
+    position:relative;
+  }
+
+  .logo {
+    margin:0;
+  }
+
+  .logo img{
+    height: auto;
+  }
+.destaque{
+  height:25vh;
+}
+  .destaqueTexto{
+  width: 80%;
+  color: white;
+  margin-left: 5px;
+  overflow: none;
+  position: relative;
+  top:-120px;
+  left:0;
+      }
+  
+  .destaqueTexto h1 {
+  font-size: 0.9em;  
+  margin-top: -5px; 
+  }
+  
+  .destaqueTexto h3{
+  font-size: 0.7em;
+  margin-top: -5px;
+    }
+
+    .destaqueTexto button{
+      font-size: 0.7em;
+      margin-top: -7px;
+        }
+  
+  .buttons {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .galery img {
+    width: 100px;
+    height: 150px;
+    margin-left: 10px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+  }
+  
+  .section h2 {
+    font-size: 1.2em;
+  }
+}
+

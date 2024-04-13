@@ -25,7 +25,7 @@ const [data5] = MoviesList({url: 'https://api.themoviedb.org/3/movie/upcoming?la
 const [data6] = MoviesList({url:'https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=3'})
 
 // junta todos de uma vez
-const dataAll = [...data, ...data2, ...data3, ...data4,, ...data5, ...data6];
+const dataAll = [...data, ...data2, ...data3, ...data4, ...data5, ...data6];
 
 //função de filtragem por genero
 const IndexByGenre = (data, genreId) => {
@@ -45,6 +45,7 @@ const IndexByGenre = (data, genreId) => {
     <div className={styles.list}>
       <h2>Filmes disponiveis na Sunshine</h2>
         <div className={styles.geners}>
+            <button onClick={()=>SetGen(0)}>Todos os Filmes</button>  
             <button onClick={()=>SetGen(28)}>Ação</button>          
             <button onClick={()=>SetGen(18)}>Drama</button>
             <button onClick={()=>SetGen(10749)}>Romance </button >

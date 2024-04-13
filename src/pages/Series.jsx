@@ -47,6 +47,7 @@ const IndexByGenre = (data, genreId) => {
     <div className={styles.list}>
       <h2>Series disponiveis na Sunshine</h2>
         <div className={styles.geners}>
+        <button onClick={()=>SetGen(0)}>Todos as Series</button>   
             <button onClick={()=>SetGen(10759)}>Ação e Aventura</button>          
             <button onClick={()=>SetGen(18)}>Drama</button>
             <button onClick={()=>SetGen(10764)}>Reality </button >
