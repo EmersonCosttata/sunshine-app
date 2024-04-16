@@ -1,3 +1,11 @@
+App ficticio de streaming.
+React no front, firebase e tmdb no backend
+
+V1.5
+Agora esta bem bacana!
+Temos como logar, cadastrar, tem a tela de dashbord funcional que mostra os filmes e series favoritados, e claro é possivel favoritar filmes e series.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
