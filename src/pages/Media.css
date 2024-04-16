@@ -28,6 +28,10 @@ border: 2px solid;
 border-radius: 3px;
 padding: 10px;
     } 
+.mediafilmenome span{
+color:rgb(95, 237, 7);
+font-size: 17px;
+}
 
 .mediafilmenome button {
         margin-right: 10px;

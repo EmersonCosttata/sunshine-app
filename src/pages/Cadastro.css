@@ -9,6 +9,14 @@ flex-direction: column;
 margin-top: 15.5vh;
 }
 
+.error{
+   color:red;
+}
+.wait{
+   color:rgb(51, 255, 0);
+   font-size: medium;
+}
+
 .Telacad h1{    
    color: white;
    font-size:260%;

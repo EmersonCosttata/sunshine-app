@@ -4,18 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
-import { FalseContext, FalseContextProvider } from './Context/FalseContext';
-
+import { FalseContextProvider } from './Context/FalseContext';
+import { AuthProvider } from './Context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <HashRouter>
+    
   <FalseContextProvider>
     <App />
   </FalseContextProvider>
+ 
     </HashRouter>
-  
   </React.StrictMode>
 );
 

@@ -6,6 +6,8 @@ import PopOutPesquisa from './PopOutPesquisa';
 
 import { useContext } from 'react';
 import { FalseContext } from '../Context/FalseContext';
+import { useAuthValue } from '../Context/AuthContext';
+import {AuthLoginRegister} from '../Api/Firebase/AuthLoginRegister'
 
 import './PopOut.css'
 
@@ -14,6 +16,10 @@ Modal.setAppElement("#root");
 
 
 function PopOut() {
+  // estado de login e logoff aq
+  const { user } = useAuthValue();
+  const {logout} = AuthLoginRegister();
+  
   //contexo pra fechar em qualquer lugar o modal
   const { popfalse, setPopFalse } = useContext(FalseContext);
 
@@ -32,7 +38,6 @@ function PopOut() {
 // cuida se o context mudar pra false, assim ele seta pra false
   useEffect(()=>{
     if(popfalse===false){
-      console.log('CHEGUEI NO FALSE')
       setMIsOpen(false);
     }
   },[popfalse])
@@ -45,9 +50,10 @@ function PopOut() {
         animate={{ opacity: 1 }}>
         <div className={`pop-out-container ${isOpen ? 'open' : ''}`}>
           <div className="pop-out-content">
-            <Link to="/login" className='pagina'><button>Login</button></Link>
-            <Link to="/selecionaplano"> <button>Cadastrar</button></Link>
-
+          {user && (<button onClick={logout}>Sair</button>)}
+            {!user &&<Link to="/login" className='pagina'><button>Login</button></Link>}
+            {!user && <Link to="/selecionaplano"> <button>Cadastrar</button></Link>}
+            {user && <Link to="/dashbord"> <button>Minha Conta</button></Link>}
             <button onClick={openModal}>Procurar</button>
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="procura" 

@@ -11,7 +11,9 @@ import { GetMediaTrailer } from '../Api/GetMediaTrailer';
 
 import { useContext } from 'react';
 import { FalseContext } from '../Context/FalseContext';
-
+import { AuthAddRemoveFav } from '../Api/Firebase/AuthAddRemoveFav';
+import { useAuthValue } from '../Context/AuthContext';
+import { AuthListFav } from '../Api/Firebase/AuthListFav';
 
 Modal.setAppElement("#root");
 
@@ -40,12 +42,55 @@ const data = TvDetail({id})
 const url = `https://api.themoviedb.org/3/tv/${id}/videos?language=pt-BR`
 const trailer = GetMediaTrailer({url})
 console.log(trailer.trailer)
-
-
 const yturl = trailer.trailer && trailer.trailer.length !== 0
   ? `https://www.youtube.com/embed/${trailer.trailer[0].key}?vq=hd1080&autoplay=1`
   : 'https://www.youtube.com/embed/9DEOJkmZLd8?vq=hd1080&autoplay=1';
 //
+
+
+//função pra add aos fav
+const { user } = useAuthValue(); // pegando o user pra usar o uid
+const [errormedia, setErrorMedia] = useState();
+const { addFav, error: authError, loading } = AuthAddRemoveFav();
+
+//chamando a lista atual para checagem
+const { dataList: lista, error: ListauthError, loading: ListLoading } = AuthListFav('seriesfav');
+
+const AddtoFav = async () => {
+
+  const idUser = user.uid;
+  const original_name = data.tv.original_name
+  const poster_path = data.tv.poster_path
+  const title = data.tv.name
+
+  const datafav = { 
+      idUser,
+      id,
+      original_name,
+      poster_path,
+      title
+  };
+  //definido aonde sera salvo a base
+   // checando se essa midia ja n foi adcionada
+
+   const jaAdd = lista.some(movie => movie.id === datafav.id && movie.idUser === datafav.idUser);
+   if(jaAdd){ setErrorMedia('Ja foi Adcionado') 
+   return }
+
+  const cole ='seriesfav'
+  if (!datafav.idUser) {
+    setErrorMedia('Tente mais tarde')
+      return;
+  }
+  try {
+    const res = await addFav(datafav,cole);
+    window.location.reload();
+  } catch (authError) {
+    setErrorMedia('Erro db Tente mais tarde');
+  }
+};
+
+
     return (
       <div className="mediageral">
   
@@ -67,7 +112,7 @@ const yturl = trailer.trailer && trailer.trailer.length !== 0
               <iframe src={yturl} title="" frameborder="0" allowfullscreen="true" width="98%" height="98%"></iframe>
             </Modal>
             
-             <button >Trailer</button> <button >+</button> 
+             <button >Trailer</button>  <button onClick={AddtoFav} >+</button> <span>{loading && 'Adcionando'}</span> <span>{errormedia && errormedia}</span>
 
 
             <p>{data.tv && data.tv.overview}</p>      

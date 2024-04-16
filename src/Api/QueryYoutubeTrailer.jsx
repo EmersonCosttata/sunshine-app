@@ -1,5 +1,5 @@
 export const QueryYoutubeTrailer = async (name) => {
-    const apiKey = 'AIzaSyDpMqbg8OrvlqxV51d60LiBqAgiP1UwdRk';
+    const apiKey = '';
     const query = 'Trailer ' + name;
     const maxResults = 1; // Queremos apenas o primeiro resultado
 
@@ -10,8 +10,10 @@ export const QueryYoutubeTrailer = async (name) => {
             const data = await response.json();
 
             if (data.items && data.items.length > 0) {
+                // Obter o ID do primeiro vídeo
                 const videoId = data.items[0].id.videoId;
 
+                // Construir a URL do vídeo
                 const videoUrl = `https://www.youtube.com/embed/${videoId}?vq=hd1080&autoplay=1`;
 
                 console.log('URL do primeiro vídeo:', videoUrl);
