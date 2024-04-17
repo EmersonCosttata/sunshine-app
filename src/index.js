@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
 import { FalseContextProvider } from './Context/FalseContext';
-import { AuthProvider } from './Context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

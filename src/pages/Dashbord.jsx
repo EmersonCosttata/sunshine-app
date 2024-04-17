@@ -24,13 +24,13 @@ const Dashbord = () => {
       <h4>Data de Cadastro: {user.metadata.creationTime.substring(0, 17)}</h4>
       <h2>Favoritos:</h2>
       {loading && <p>Carregando...</p>}
-      {data.length == 0 ? (
+      {data.length === 0 ? (
     <p>Você ainda não tem nenhum filme favorito, navegue pelo app e adicione agora!</p>) : ('')}
       {data &&  <h3>Filmes:</h3>}
       {data && <GaleryAll images={data}></GaleryAll>}
       
       {loadingSeries && <p>Carregando...</p>}
-      {dataSeries.length == 0 ? (
+      {dataSeries.length === 0 ? (
     <p>Você ainda não tem nenhuma serie favorita, navegue pelo app e adicione agora!</p>) : ('')}
       {dataSeries &&  <h3>Series:</h3>}
       {dataSeries && <GaleryAll images={dataSeries}></GaleryAll>}

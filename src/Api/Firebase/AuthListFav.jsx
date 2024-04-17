@@ -31,7 +31,7 @@ export const AuthListFav = (coletiondb) => {
         };
         fetchData(coletiondb);
         
-    }, []);
+    }, [coletiondb]);
     return {dataList,loading,error}
 }
 

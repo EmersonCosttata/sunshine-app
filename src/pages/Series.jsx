@@ -27,7 +27,7 @@ const [data6] = MoviesList({url:'https://api.themoviedb.org/3/tv/top_rated?langu
 const [data7] = MoviesList({url:'https://api.themoviedb.org/3/tv/top_rated?language=pt-BR&page=2'})
 
 // junta todos de uma vez
-let dataAll = [...data7,...data, ...data2, ...data3, ...data4,, ...data5, ...data6];
+let dataAll = [...data7,...data, ...data2, ...data3, ...data4, ...data5, ...data6];
 
 //função de filtragem por genero
 const IndexByGenre = (data, genreId) => {

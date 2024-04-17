@@ -1,3 +1,4 @@
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
@@ -14,7 +15,7 @@ const firebaseConfig = {
   storageBucket: "sunshineapp-eb70d.appspot.com",
   messagingSenderId: "390520945121",
   appId: "1:390520945121:web:c868a470462e494388baa0"
-};
+}; 
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

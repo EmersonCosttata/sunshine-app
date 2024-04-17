@@ -1,6 +1,4 @@
 
-import { useAuthValue } from '../Context/AuthContext';
-import {AuthLoginRegister} from '../Api/Firebase/AuthLoginRegister'
 
 import logo from '../logo.png';
 import PopOut from './PopOut';

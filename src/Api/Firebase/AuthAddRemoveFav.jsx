@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
-import { collection, addDoc } from 'firebase/firestore';
+import { addDoc} from 'firebase/firestore';
+import { collection, query, where, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 
 export const AuthAddRemoveFav = () => {
@@ -24,11 +25,8 @@ export const AuthAddRemoveFav = () => {
      
             const collectionRef = collection(db, cole);
 
-
             const docRef = await addDoc(collectionRef, data);
         
-  
-            console.log('Documento adicionado com ID:', docRef.id);
             } catch (error) {
             setError('Erro ao adicionar dados ao BD, Tente mais tarde:', error);
             console.log(error)
@@ -36,9 +34,41 @@ export const AuthAddRemoveFav = () => {
             }
             setLoading(false);
         };
+    
+
+        const deleteFav = async (collectionName, data) => {
+            setError('');
+        
+            try {
+                const collectionRef = collection(db, collectionName);
+
+                const q = query(collectionRef, where('idUser', '==', data.idUser), where('id', '==', data.id));
+                
+                const querySnapshot = await getDocs(q);
+        
+                if (!querySnapshot.empty) {
+                    const docSnapshot = querySnapshot.docs[0]; // Pegamos o primeiro documento
+                    const documentId = docSnapshot.id;
+                    const documentRef = doc(collectionRef, documentId);
+        
+                    // Exclua o documento
+                    await deleteDoc(documentRef);
+        
+                } else {
+                    setError('Nenhum documento encontrado com os critérios fornecidos');
+                }
+            } catch (error) { 
+                console.log("Erro ao excluir o documento:" + error);
+                setError("Erro ao excluir o documento:" + error);
+                return;
+            }
+        
+            setLoading(false);
+        };
+        
         useEffect(() => {
             return () => setCancelled(true);
         }, []);
         
-     return {addFav,error, loading}   
+     return {addFav,deleteFav,error, loading}   
 }

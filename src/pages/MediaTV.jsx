@@ -1,7 +1,7 @@
 
 import './Media.css'
 import Section from '../components/Section';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
 import { MoviesList } from '../Api/MoviesList';
@@ -41,7 +41,6 @@ const data = TvDetail({id})
 //função pra pegar o trialer do filme
 const url = `https://api.themoviedb.org/3/tv/${id}/videos?language=pt-BR`
 const trailer = GetMediaTrailer({url})
-console.log(trailer.trailer)
 const yturl = trailer.trailer && trailer.trailer.length !== 0
   ? `https://www.youtube.com/embed/${trailer.trailer[0].key}?vq=hd1080&autoplay=1`
   : 'https://www.youtube.com/embed/9DEOJkmZLd8?vq=hd1080&autoplay=1';
@@ -51,45 +50,66 @@ const yturl = trailer.trailer && trailer.trailer.length !== 0
 //função pra add aos fav
 const { user } = useAuthValue(); // pegando o user pra usar o uid
 const [errormedia, setErrorMedia] = useState();
-const { addFav, error: authError, loading } = AuthAddRemoveFav();
+//chamando a função para add fav
+const { addFav,deleteFav, error: authError, loading } = AuthAddRemoveFav();
 
 //chamando a lista atual para checagem
 const { dataList: lista, error: ListauthError, loading: ListLoading } = AuthListFav('seriesfav');
 
+//pegando dados para add na lista de fav
+const [datafav, setDataFav] = useState(null);
+const [jaAdd, setJaAdd] = useState();
+
+useEffect(() => {
+
+    if (data.tv) {
+        // Crie as variáveis   
+        const poster_path = data.tv.poster_path;
+        const title = data.tv.name;
+        const original_name = data.tv. original_name;
+
+        // Crie o objeto datafav com as variáveis
+        const dataFav = {
+            idUser: user.uid,
+            id,
+            original_name:  original_name,
+            poster_path,
+            title
+        };
+        const jaAddS = lista.some(tv => tv.id === dataFav.id && tv.idUser === dataFav.idUser)
+        setJaAdd(jaAddS)
+        setDataFav(dataFav);
+    }
+  
+}, [data.tv , lista, user, id, jaAdd]);
+
+console.log(datafav)
+
 const AddtoFav = async () => {
+    //definindo a base de dados aonde sera salvo as informações
+    const cole ='seriesfav'
+    //checando se veio o iduser
+      if (!datafav.idUser) {
+        setErrorMedia('Tente mais tarde')
+          return;
+      }
 
-  const idUser = user.uid;
-  const original_name = data.tv.original_name
-  const poster_path = data.tv.poster_path
-  const title = data.tv.name
-
-  const datafav = { 
-      idUser,
-      id,
-      original_name,
-      poster_path,
-      title
-  };
-  //definido aonde sera salvo a base
-   // checando se essa midia ja n foi adcionada
-
-   const jaAdd = lista.some(movie => movie.id === datafav.id && movie.idUser === datafav.idUser);
-   if(jaAdd){ setErrorMedia('Ja foi Adcionado') 
-   return }
-
-  const cole ='seriesfav'
-  if (!datafav.idUser) {
-    setErrorMedia('Tente mais tarde')
-      return;
-  }
-  try {
-    const res = await addFav(datafav,cole);
-    window.location.reload();
-  } catch (authError) {
-    setErrorMedia('Erro db Tente mais tarde');
-  }
+      try {
+          const res = await addFav(datafav,cole);
+          window.location.reload();
+      } catch (authError) {
+        setErrorMedia('Erro db Tente mais tarde');
+      }
 };
+  const DeletFav = async () =>{
+    try {
+      const res = await deleteFav('seriesfav',datafav);
+      window.location.reload(); 
+  } catch (authError) {
+    setErrorMedia('Erro db Tente mais tarde'+ authError);
+  }
 
+  }
 
     return (
       <div className="mediageral">
@@ -112,7 +132,10 @@ const AddtoFav = async () => {
               <iframe src={yturl} title="" frameborder="0" allowfullscreen="true" width="98%" height="98%"></iframe>
             </Modal>
             
-             <button >Trailer</button>  <button onClick={AddtoFav} >+</button> <span>{loading && 'Adcionando'}</span> <span>{errormedia && errormedia}</span>
+             <button >Trailer</button>  
+             {jaAdd === true ? <button onClick={DeletFav}>Remover Favorito</button> : null}
+             {jaAdd === false ? <button onClick={AddtoFav}>+</button> : null}
+              <span>{loading && 'Adcionando'}</span> <span>{errormedia && errormedia}</span>
 
 
             <p>{data.tv && data.tv.overview}</p>      

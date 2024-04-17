@@ -28,8 +28,6 @@ function App() {
 
   const [user, setUser] = useState(undefined);
   const { auth } = AuthLoginRegister();
-  console.log(user)
-  console.log(auth)
   const loadingUser = user === undefined;
 
   useEffect(() => {
